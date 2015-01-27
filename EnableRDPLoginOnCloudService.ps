@@ -1,0 +1,9 @@
+Add-AzureAccount
+
+$azureCloudService = "<<Name of your Cloud Service>>"
+$subscriptionName = "<<Name of your Subscription here>>"
+Select-AzureSubscription $subscriptionName
+
+$pwd = ConvertTo-SecureString "p@ssw0rd" -AsPlainText -Force
+$loginCredentials = New-Object System.Management.Automation.PSCredential ("debugtest", $pwd)
+Set-AzureServiceRemoteDesktopExtension -ServiceName $azureCloudService -Credential $loginCredentials
